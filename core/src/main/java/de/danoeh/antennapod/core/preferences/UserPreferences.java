@@ -64,8 +64,8 @@ public class UserPreferences {
     public static final String PREF_PAUSE_ON_HEADSET_DISCONNECT = "prefPauseOnHeadsetDisconnect";
     public static final String PREF_UNPAUSE_ON_HEADSET_RECONNECT = "prefUnpauseOnHeadsetReconnect";
     private static final String PREF_UNPAUSE_ON_BLUETOOTH_RECONNECT = "prefUnpauseOnBluetoothReconnect";
-    private static final String PREF_HARDWARE_FOWARD_BUTTON_SKIPS = "prefHardwareForwardButtonSkips";
-    private static final String PREF_HARDWARE_PREVIOUS_BUTTON_RESTARTS = "prefHardwarePreviousButtonRestarts";
+    public static final String PREF_FOWARD_BUTTON_SKIPS = "prefForwardButtonSkips";
+    public static final String PREF_PREVIOUS_BUTTON_RESTARTS = "prefPreviousButtonRestarts";
     public static final String PREF_FOLLOW_QUEUE = "prefFollowQueue";
     private static final String PREF_SKIP_KEEPS_EPISODE = "prefSkipKeepsEpisode";
     private static final String PREF_FAVORITE_KEEPS_EPISODE = "prefFavoriteKeepsEpisode";
@@ -283,12 +283,12 @@ public class UserPreferences {
         return prefs.getBoolean(PREF_UNPAUSE_ON_BLUETOOTH_RECONNECT, false);
     }
 
-    public static boolean shouldHardwareButtonSkip() {
-        return prefs.getBoolean(PREF_HARDWARE_FOWARD_BUTTON_SKIPS, false);
+    public static boolean shouldForwardButtonSkip() {
+        return prefs.getBoolean(PREF_FOWARD_BUTTON_SKIPS, true);
     }
 
-    public static boolean shouldHardwarePreviousButtonRestart() {
-        return prefs.getBoolean(PREF_HARDWARE_PREVIOUS_BUTTON_RESTARTS, false);
+    public static boolean shouldPreviousButtonRestart() {
+        return prefs.getBoolean(PREF_PREVIOUS_BUTTON_RESTARTS, true);
     }
 
 

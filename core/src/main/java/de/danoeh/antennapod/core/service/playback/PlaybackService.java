@@ -514,8 +514,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
 
                 return true;
             case KeyEvent.KEYCODE_MEDIA_NEXT:
-                if(source == InputDevice.SOURCE_CLASS_NONE ||
-                        UserPreferences.shouldHardwareButtonSkip()) {
+                if(UserPreferences.shouldForwardButtonSkip()) {
                     // assume the skip command comes from a notification or the lockscreen
                     // a >| skip button should actually skip
                     mediaPlayer.skip();
@@ -529,7 +528,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                 mediaPlayer.seekDelta(UserPreferences.getFastForwardSecs() * 1000);
                 return true;
             case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
-                if(UserPreferences.shouldHardwarePreviousButtonRestart()) {
+                if(UserPreferences.shouldPreviousButtonRestart()) {
                     // user wants to restart current episode
                     mediaPlayer.seekTo(0);
                 } else {
@@ -1745,7 +1744,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         @Override
         public void onSkipToNext() {
             Log.d(TAG, "onSkipToNext()");
-            if(UserPreferences.shouldHardwareButtonSkip()) {
+            if(UserPreferences.shouldForwardButtonSkip()) {
                 mediaPlayer.skip();
             } else {
                 seekDelta(UserPreferences.getFastForwardSecs() * 1000);
